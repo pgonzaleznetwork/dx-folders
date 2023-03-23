@@ -7,13 +7,15 @@
     "start": "node src/main.js",
     "test": "jest --silent=false  ",
     "watch": "jest --silent=false --verbose --detectOpenHandles --coverage --watchAll",
-    "test:coverage":"jest --silent=false --verbose --detectOpenHandles --coverage && jest-coverage-badges"
+    "test:coverage": "jest --silent=false --verbose --detectOpenHandles --coverage && jest-coverage-badges"
   },
   "author": "Pablo Gonzalez",
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1",
-     "jest-coverage-badges": "^1.0.0"
+    "jest-coverage-badges": "^1.0.0",
+    "memfs": "^3.4.13",
+    "mock-fs": "^5.2.0"
   },
   "jest": {
     "coverageReporters": [
