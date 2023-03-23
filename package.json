@@ -1,0 +1,25 @@
+{
+  "name": "dx-folders-core",
+  "version": "1.0.0",
+  "description": "Core package to organize apex class folders based on their assumed prefix",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "jest --silent=false  ",
+    "watch": "jest --silent=false --verbose --detectOpenHandles --coverage --watchAll",
+    "test:coverage":"jest --silent=false --verbose --detectOpenHandles --coverage && jest-coverage-badges"
+  },
+  "author": "Pablo Gonzalez",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.5.1",
+     "jest-coverage-badges": "^1.0.0"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ]
+  }
+}
