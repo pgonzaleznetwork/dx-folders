@@ -62,7 +62,11 @@ describe('All tests', () => {
 
         let files = [
             `${DEFAULT_PATH}SRM/__tests__/SRM_deployerTest.cls`,
-            `${DEFAULT_PATH}SRM/__tests__/SRM_deployerTest.cls`
+            `${DEFAULT_PATH}SRM/__tests__/SRM_deployerTest.cls-meta.xml`,
+            `${DEFAULT_PATH}SRM/__tests__/SRM_retrieve_Test.cls`,
+            `${DEFAULT_PATH}SRM/__tests__/SRM_retrieve_Test.cls-meta.xml`,
+            `${DEFAULT_PATH}SRM/__tests__/SRM_configure_Tests.cls`,
+            `${DEFAULT_PATH}SRM/__tests__/SRM_configure_Tests.cls-meta.xml`
         ]
 
         files.forEach(file => {
@@ -86,6 +90,20 @@ describe('All tests', () => {
 
     });
 
+    test(`The _Test suffix (i.e. AccountService_Test[s].cls) should not create a top-level folder with the string before the suffix (i.e AccountService)`, async () => {
+
+        expect(
+            fs.existsSync(`${DEFAULT_PATH}AccountService`),
+            `${DEFAULT_PATH}AccountService shouldnt exist as a top-level directory`
+        ).toEqual(false);
+       
+        expect(
+            fs.existsSync(`${DEFAULT_PATH}LeadService`),
+            `${DEFAULT_PATH}LeadService shouldnt exist as a top-level directory`
+        ).toEqual(false);
+
+    });
+
     afterAll(() => {
         mock.restore();
     });
@@ -103,14 +121,23 @@ const project = {
                     'SRM_retrieve.cls':'',
                     'SRM_retrieve.cls-meta.xml':'',
 
+                    'SRM_retrieve_Test.cls':'',
+                    'SRM_retrieve_Test.cls-meta.xml':'',
+
+                    'AccountService_Test.cls':'',
+                    'AccountService_Test.cls-meta.xml':'',
+
+                    'LeadService_Tests.cls':'',
+                    'LeadService_Tests.cls-meta.xml':'',
+
                     'FFL_UnitOfWork.cls':'',
                     'FFL_UnitOfWork.cls-meta.xml':'',
 
                     'SRM_deployerTest.cls':'',
                     'SRM_deployerTest.cls-meta.xml':'',
 
-                    'SRM_retrieve_Tests.cls':'',
-                    'SRM_retrieve_Tests.cls-meta.xml':'',
+                    'SRM_configure_Tests.cls':'',
+                    'SRM_configure_Tests.cls-meta.xml':'',
 
                     'PdfCreateService.cls':'',
                     'PdfCreateService.cls-meta.xml':'',
