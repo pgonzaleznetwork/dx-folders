@@ -1,0 +1,3 @@
+{"total": {"lines":{"total":54,"covered":44,"skipped":0,"pct":81.48},"statements":{"total":56,"covered":44,"skipped":0,"pct":78.57},"functions":{"total":7,"covered":4,"skipped":0,"pct":57.14},"branches":{"total":18,"covered":16,"skipped":0,"pct":88.88},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
+,"/Users/pgonzalez/Documents/apps/dx-folders/lib/reorderFiles.js": {"lines":{"total":54,"covered":44,"skipped":0,"pct":81.48},"functions":{"total":7,"covered":4,"skipped":0,"pct":57.14},"statements":{"total":56,"covered":44,"skipped":0,"pct":78.57},"branches":{"total":18,"covered":16,"skipped":0,"pct":88.88}}
+}
