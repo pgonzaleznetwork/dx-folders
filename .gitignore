@@ -1,1 +1,4 @@
 node_modules
+.sfdx
+.vscode
+lib/dx-folders.log

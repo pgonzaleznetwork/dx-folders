@@ -19,6 +19,7 @@ describe('All tests', () => {
         expect(stat.isDirectory()).toEqual(true);
     });
 
+    
     test('A "src" folder is created under top-level prefix folder', async () => {
                 
         let stat = await fs.promises.stat(`${DEFAULT_PATH}SRM/src`);
@@ -33,6 +34,14 @@ describe('All tests', () => {
         let stat = await fs.promises.stat(`${DEFAULT_PATH}SRM/__tests__`);
        
         expect(stat.isDirectory()).toEqual(true);
+    });
+
+    test(`The "__tests__" folder shouldnt be created if there arent any test classes for that prefix`, async () => {
+                
+        expect(
+            fs.existsSync(`${DEFAULT_PATH}Domain/__tests__`),
+            `${DEFAULT_PATH}Domain/__tests__ shouldnt exist`
+        ).toEqual(false);
     });
 
     test(`Both the .cls and .cls-meta.xml files for non-test classes should be moved
@@ -104,6 +113,42 @@ describe('All tests', () => {
 
     });
 
+    test(`Special identifiers [batch,triggerhandler,etc] should be created as folder inside the top-level domain folder (if it exists)`, async () => {
+
+        let files = [
+            `${DEFAULT_PATH}FFL/trigger_handlers/src/FFL_UnitOfWorkTriggerHandler.cls`,
+            `${DEFAULT_PATH}FFL/trigger_handlers/src/FFL_UnitOfWorkTriggerHandler.cls-meta.xml`,
+        ]
+
+        files.forEach(file => {
+
+            expect(
+                fs.existsSync(file),
+                `${file} does not exist`
+            ).toEqual(true);
+
+        })
+
+    });
+
+    test(`Special identifiers [batch,triggerhandler,etc] should be created as top-level domain folder if they dont have a prefix`, async () => {
+
+        let files = [
+            `${DEFAULT_PATH}trigger_handlers/src/OpportunityTriggerHandler.cls`,
+            `${DEFAULT_PATH}trigger_handlers/src/OpportunityTriggerHandler.cls-meta.xml`,
+        ]
+
+        files.forEach(file => {
+
+            expect(
+                fs.existsSync(file),
+                `${file} does not exist`
+            ).toEqual(true);
+
+        })
+
+    });
+
     afterAll(() => {
         mock.restore();
     });
@@ -159,12 +204,13 @@ const project = {
 
                     'FFL_UnitOfWorkTriggerHandler_Test.cls':'',
                     'FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml':'',
+
+                    'Domain_Controller.cls':'',
+                    'Domain_Controller.cls-meta.xml':'',
                 }
             }
         }
     }
 }
 
-function createRandomThreeLetterString(){
-    return Math.random().toString(36).substring(2, 5);
-}
+
