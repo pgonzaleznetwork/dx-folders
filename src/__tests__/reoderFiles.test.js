@@ -146,7 +146,19 @@ const project = {
                     'PdfCreateServiceHttpMock.cls-meta.xml':'',
 
                     'Test_PdfCreateService.cls':'',
-                    'Test_PdfCreateService.cls-meta.xml':''
+                    'Test_PdfCreateService.cls-meta.xml':'',
+
+                    'OpportunityTriggerHandler.cls':'',
+                    'OpportunityTriggerHandler.cls-meta.xml':'',
+
+                    'OpportunityTriggerHandlerTests.cls':'',
+                    'OpportunityTriggerHandlerTests.cls-meta.xml':'',
+
+                    'FFL_UnitOfWorkTriggerHandler.cls':'',
+                    'FFL_UnitOfWorkTriggerHandler.cls-meta.xml':'',
+
+                    'FFL_UnitOfWorkTriggerHandler_Test.cls':'',
+                    'FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml':'',
                 }
             }
         }
