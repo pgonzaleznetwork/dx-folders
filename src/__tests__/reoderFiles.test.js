@@ -202,11 +202,17 @@ const project = {
                     'FFL_UnitOfWorkTriggerHandler.cls':'',
                     'FFL_UnitOfWorkTriggerHandler.cls-meta.xml':'',
 
-                    'FFL_UnitOfWorkTriggerHandler_Test.cls':'',
+                    'FFL_UnitOfWorkTriggerHandler_Test.cls':'',//should be moved to the trigger_handlers folder
                     'FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml':'',
 
                     'Domain_Controller.cls':'',
                     'Domain_Controller.cls-meta.xml':'',
+
+                    'CodeBuilder__fflib_ApexMocksUtilsTest.cls':'',
+                    'CodeBuilder__fflib_ApexMocksUtilsTest.cls-meta.xml':'',
+
+                    'CodeBuilder__SessionDataControllerTest.cls':'',
+                    'CodeBuilder__SessionDataControllerTest.cls-meta.xml':''
                 }
             }
         }
