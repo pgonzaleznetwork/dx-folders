@@ -136,6 +136,8 @@ describe('All tests', () => {
         let files = [
             `${DEFAULT_PATH}trigger_handlers/src/OpportunityTriggerHandler.cls`,
             `${DEFAULT_PATH}trigger_handlers/src/OpportunityTriggerHandler.cls-meta.xml`,
+            `${DEFAULT_PATH}trigger_handlers/__tests__/OpportunityTriggerHandlerTests.cls`,
+            `${DEFAULT_PATH}trigger_handlers/__tests__/OpportunityTriggerHandlerTests.cls-meta.xml`,
         ]
 
         files.forEach(file => {
