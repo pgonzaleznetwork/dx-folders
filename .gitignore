@@ -2,3 +2,4 @@ node_modules
 .sfdx
 .vscode
 lib/dx-folders.log
+run.js
