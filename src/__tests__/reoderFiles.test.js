@@ -118,6 +118,8 @@ describe('All tests', () => {
         let files = [
             `${DEFAULT_PATH}FFL/trigger_handlers/src/FFL_UnitOfWorkTriggerHandler.cls`,
             `${DEFAULT_PATH}FFL/trigger_handlers/src/FFL_UnitOfWorkTriggerHandler.cls-meta.xml`,
+            `${DEFAULT_PATH}FFL/trigger_handlers/__tests__/FFL_UnitOfWorkTriggerHandler_Test.cls`,
+            `${DEFAULT_PATH}FFL/trigger_handlers/__tests__/FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml`,
         ]
 
         files.forEach(file => {
@@ -130,6 +132,40 @@ describe('All tests', () => {
         })
 
     });
+
+    test(`The src and __tests__ dir 
+    shouln't be created if the only classes for that prefix are special identifiers.
+    The special identifiers should be the only folders inside the top-level domain folder`, async () => {
+
+        let invalidDirs = [
+            `${DEFAULT_PATH}ForceDB/src`,
+            `${DEFAULT_PATH}ForceDB/__tests__`
+        ]
+
+        let validFiles = [
+            `${DEFAULT_PATH}ForceDB/trigger_handlers/__tests__/ForceDB_AccountTriggerHandler_Test.cls`,
+            `${DEFAULT_PATH}ForceDB/trigger_handlers/__tests__/ForceDB_AccountTriggerHandler_Test.cls-meta.xml`
+        ]
+
+        invalidDirs.forEach(dir => {
+
+            expect(
+                fs.existsSync(dir),
+                `${dir} should not exist because there are no classes for that prefix that are not special identifiers`
+            ).toEqual(false);
+
+        })
+
+        validFiles.forEach(file => {
+
+            expect(
+                fs.existsSync(file),
+                `${file} does not exist`
+            ).toEqual(true);
+        })
+
+    });
+
 
     test(`Special identifiers [batch,triggerhandler,etc] should be created as top-level domain folder if they dont have a prefix`, async () => {
 
@@ -206,6 +242,9 @@ const project = {
 
                     'FFL_UnitOfWorkTriggerHandler_Test.cls':'',//should be moved to the trigger_handlers folder
                     'FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml':'',
+
+                    'ForceDB_AccountTriggerHandler_Test.cls':'',//should be moved to the trigger_handlers folder
+                    'ForceDB_AccountTriggerHandler_Test.cls-meta.xml':'',
 
                     'Domain_Controller.cls':'',
                     'Domain_Controller.cls-meta.xml':'',
