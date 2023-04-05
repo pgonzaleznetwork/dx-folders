@@ -254,7 +254,10 @@ const project = {
                     'OpportunityTriggerHandler.cls':'',
                     'OpportunityTriggerHandler.cls-meta.xml':'',
 
-                    'OpportunityTriggerHandlerTests.cls':'',
+                    'OpportunityTriggerHandlerTests.cls':`@isTEST
+                                                        private class MyTestClass{
+                                                    
+                                                        }`,
                     'OpportunityTriggerHandlerTests.cls-meta.xml':'',
 
                     'FFL_UnitOfWorkTriggerHandler.cls':'',
