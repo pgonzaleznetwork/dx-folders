@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85% </span>
+                <span class="strong">85.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/80</span>
+                <span class='fraction'>73/85</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.33% </span>
+                <span class="strong">56.25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/15</span>
+                <span class='fraction'>9/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">86.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/77</span>
+                <span class='fraction'>70/81</span>
             </div>
         
             
@@ -275,7 +275,17 @@
 <a name='L210'></a><a href='#L210'>210</a>
 <a name='L211'></a><a href='#L211'>211</a>
 <a name='L212'></a><a href='#L212'>212</a>
-<a name='L213'></a><a href='#L213'>213</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -292,6 +302,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,7 +335,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
@@ -371,13 +383,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">22x</span>
@@ -489,6 +507,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const glob = require("glob");
 const fs = require('fs');
+const path = require('path');
 const OTHER_FILES = 'Other';
 const pino = require('pino')
 const logger = pino({
@@ -505,7 +524,9 @@ const logger = pino({
 &nbsp;
 function reoderFiles(classesPath='force-app/main/default/classes'){
 &nbsp;
-    const files = fs.readdirSync(classesPath);
+    const files = fs.readdirSync(classesPath).map(file =&gt; `${classesPath}/${file}`)
+&nbsp;
+    console.log(files)
 &nbsp;
     let filesByPrefix = new Map();
     filesByPrefix.set(OTHER_FILES,[]);
@@ -535,7 +556,7 @@ function reoderFiles(classesPath='force-app/main/default/classes'){
         for( const fileDetails of allFiles ) {
 &nbsp;
             let newLocation;
-            let originalLocation = `${classesPath}/${fileDetails.fileName}`;
+            
 &nbsp;
             let sourceFolder = '';
             let testFolder = '';
@@ -566,7 +587,7 @@ function reoderFiles(classesPath='force-app/main/default/classes'){
 <span class="cstat-no" title="statement not covered" >                logger.info(newLocation);</span>
             }
 &nbsp;
-            fs.renameSync(originalLocation,newLocation);
+            fs.renameSync(fileDetails.originalLocation,newLocation);
         }
 &nbsp;
         
@@ -579,17 +600,23 @@ function reoderFiles(classesPath='force-app/main/default/classes'){
 &nbsp;
 &nbsp;
 &nbsp;
-function parse(fileName){
+function parse(file){
+&nbsp;
+    const parsedFile = path.parse(file);
+&nbsp;
+    let fileName = parsedFile.base;
+    let pureName = removeExtension(fileName);
+&nbsp;
+    console.log(path.parse(file))
    
     let fileDetails = {
         ignorePrefix : false,
         prefix:'',
         subPrefix:'',
         isTest:false,
-        fileName:fileName
+        fileName:fileName,
+        originalLocation:file
     }
-&nbsp;
-    let pureName = removeExtension(fileName);
 &nbsp;
     if(pureName.toLowerCase().includes('test')){
         fileDetails.isTest = true;
@@ -706,7 +733,7 @@ module.exports = reoderFiles;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-05T09:01:54.706Z
+                at 2023-04-05T09:22:52.555Z
             </div>
         <script src="prettify.js"></script>
         <script>
