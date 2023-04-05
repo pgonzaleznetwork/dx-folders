@@ -89,6 +89,8 @@ describe('All tests', () => {
 
     });
 
+
+
     test(`The Test_ prefix (i.e. Test_PdfCreateService.cls) should not create a Test top-level folder`, async () => {
 
         expect(
@@ -204,22 +206,37 @@ const project = {
                     'SRM_retrieve.cls':'',
                     'SRM_retrieve.cls-meta.xml':'',
 
-                    'SRM_retrieve_Test.cls':'',
+                    'SRM_retrieve_Test.cls':`@IsTest
+                                             private class MyTestClass{
+                                            
+                                            }`,
                     'SRM_retrieve_Test.cls-meta.xml':'',
 
-                    'AccountService_Test.cls':'',
+                    'AccountService_Test.cls':`@istest
+                                                private class MyTestClass{
+                                            
+                                            }`,
                     'AccountService_Test.cls-meta.xml':'',
 
-                    'LeadService_Tests.cls':'',
+                    'LeadService_Tests.cls':`@isTEST
+                                            private class MyTestClass{
+                                        
+                                            }`,
                     'LeadService_Tests.cls-meta.xml':'',
 
                     'FFL_UnitOfWork.cls':'',
                     'FFL_UnitOfWork.cls-meta.xml':'',
 
-                    'SRM_deployerTest.cls':'',
+                    'SRM_deployerTest.cls':`@isTEST
+                                            private class MyTestClass{
+                                        
+                                            }`,
                     'SRM_deployerTest.cls-meta.xml':'',
 
-                    'SRM_configure_Tests.cls':'',
+                    'SRM_configure_Tests.cls':`@isTEST
+                                                private class MyTestClass{
+                                            
+                                                }`,
                     'SRM_configure_Tests.cls-meta.xml':'',
 
                     'PdfCreateService.cls':'',
@@ -228,7 +245,10 @@ const project = {
                     'PdfCreateServiceHttpMock.cls':'',
                     'PdfCreateServiceHttpMock.cls-meta.xml':'',
 
-                    'Test_PdfCreateService.cls':'',
+                    'Test_PdfCreateService.cls':`@isTEST
+                                                private class MyTestClass{
+                                            
+                                                }`,
                     'Test_PdfCreateService.cls-meta.xml':'',
 
                     'OpportunityTriggerHandler.cls':'',
@@ -240,14 +260,26 @@ const project = {
                     'FFL_UnitOfWorkTriggerHandler.cls':'',
                     'FFL_UnitOfWorkTriggerHandler.cls-meta.xml':'',
 
-                    'FFL_UnitOfWorkTriggerHandler_Test.cls':'',
+                    'FFL_UnitOfWorkTriggerHandler_Test.cls':`@isTEST
+                                                            private class MyTestClass{
+                                                        
+                                                            }`,
                     'FFL_UnitOfWorkTriggerHandler_Test.cls-meta.xml':'',
 
-                    'ForceDB_AccountTriggerHandler_Test.cls':'',
+                    'ForceDB_AccountTriggerHandler_Test.cls':`@isTEST
+                                                            private class MyTestClass{
+                                                        
+                                                            }`,
                     'ForceDB_AccountTriggerHandler_Test.cls-meta.xml':'',
 
                     'Domain_Controller.cls':'',
                     'Domain_Controller.cls-meta.xml':'',
+
+                    'TestimonialController.cls':'',
+                    'TestimonialController.cls-meta.xml':'',
+
+                    'Testim_AccountSync.cls':'',
+                    'Testim_AccountSync.cls-meta.xml':'',
                 }
             }
         }
